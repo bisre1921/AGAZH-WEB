@@ -1,34 +1,37 @@
 "use client";
 import Image from "next/image";
+import HousekeeperImage from "../../public/assets/house_keeper_image.png";
 
 const HomePage = () => {
   return (
-    <section className="relative flex items-center justify-center h-screen bg-gray-900 text-white">
-      {/* Background Image */}
-      <div className="absolute inset-0">
-        <Image 
-          src="/images/home-bg.jpg" 
-          alt="Home Background" 
-          layout="fill" 
-          objectFit="cover" 
-          className="opacity-30"
+    <section className="flex flex-col md:flex-row items-center justify-between min-h-screen bg-[#F9F6F1] text-[#333] px-6 md:px-20 pt-24">
+      {/* Left Section - Image */}
+      <div className="w-full md:w-1/2 flex justify-center">
+        <Image
+          src={HousekeeperImage}
+          alt="Housekeeper"
+          width={500}
+          height={500}
+          className="rounded-lg"
         />
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 text-center px-6 max-w-3xl">
-        {/* <h1 className="text-6xl font-extrabold tracking-wide mb-6 text-yellow-400">
+      {/* Right Section - Content */}
+      <div className="w-full md:w-1/2 text-center md:text-left space-y-6">
+        <h1 className="text-5xl md:text-6xl font-extrabold tracking-wide text-[#B08968]">
           AGAZH
-        </h1> */}
-        <p className="text-lg text-gray-300 leading-relaxed">
+        </h1>
+        <p className="text-lg text-[#555] leading-relaxed">
           A platform to hire housekeepers and for housekeepers to find jobs.  
           Connecting families with trusted domestic workers in an easy and secure way.
         </p>
-        <div className="flex justify-center gap-6 mt-8">
-          <button className="bg-yellow-400 text-gray-900 px-6 py-3 rounded-lg font-bold text-lg shadow-md hover:bg-yellow-500 transition">
+
+        {/* Buttons */}
+        <div className="flex flex-col md:flex-row gap-4 md:gap-6 mt-6">
+          <button className="bg-[#E8C888] text-[#333] px-6 py-3 rounded-full font-bold text-lg shadow-md hover:bg-[#D4AF7A] transition">
             Hire a Housekeeper
           </button>
-          <button className="border border-yellow-400 text-yellow-400 px-6 py-3 rounded-lg font-bold text-lg hover:bg-yellow-400 hover:text-gray-900 transition">
+          <button className="border border-[#E8C888] text-[#E8C888] px-6 py-3 rounded-full font-bold text-lg hover:bg-[#E8C888] hover:text-[#333] transition">
             Find a Job
           </button>
         </div>

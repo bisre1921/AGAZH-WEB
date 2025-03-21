@@ -8,31 +8,29 @@ const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="bg-gray-900 text-white px-6 py-4 shadow-lg">
-      <div className="max-w-7xl mx-auto flex justify-between items-center">
+    <nav className="fixed top-0 left-0 w-full bg-[#FAF3E0] text-[#333] shadow-md z-50">
+      <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
         {/* Logo */}
-        <Link href="/">
-          <span className="text-2xl font-bold cursor-pointer text-yellow-400">
-            Agazh
-          </span>
+        <Link href="/" className="text-3xl font-extrabold text-[#B08968]">
+          Agazh
         </Link>
 
         {/* Desktop Menu */}
-        <ul className="hidden md:flex space-x-6 text-lg">
+        <ul className="hidden md:flex space-x-8 text-lg font-medium">
           <li>
-            <Link href="/" className="hover:text-yellow-400 transition">
+            <Link href="/" className="hover:text-[#B08968] transition">
               Home
             </Link>
           </li>
           <li>
-            <Link href="/contact" className="hover:text-yellow-400 transition">
+            <Link href="/contact" className="hover:text-[#B08968] transition">
               Contact
             </Link>
           </li>
           <li>
             <Link
               href="/auth"
-              className="bg-yellow-400 text-gray-900 px-4 py-2 rounded-lg font-semibold hover:bg-yellow-500 transition"
+              className="bg-[#E8C888] text-[#333] px-5 py-2 rounded-full font-semibold shadow-md hover:bg-[#D4AF7A] transition"
             >
               Login / Register
             </Link>
@@ -44,13 +42,13 @@ const NavBar = () => {
           onClick={() => setIsOpen(!isOpen)}
           className="md:hidden focus:outline-none"
         >
-          {isOpen ? <FaTimes size={28} /> : <FaBars size={28} />}
+          {isOpen ? <FaTimes size={30} /> : <FaBars size={30} />}
         </button>
       </div>
 
       {/* Mobile Menu */}
       {isOpen && (
-        <ul className="md:hidden flex flex-col items-center bg-gray-800 text-lg py-4 space-y-4">
+        <ul className="md:hidden flex flex-col items-center bg-[#F0E5D8] py-6 space-y-6 text-lg font-medium">
           <li>
             <Link href="/" onClick={() => setIsOpen(false)}>
               Home
@@ -64,7 +62,7 @@ const NavBar = () => {
           <li>
             <Link
               href="/auth"
-              className="bg-yellow-400 text-gray-900 px-4 py-2 rounded-lg font-semibold hover:bg-yellow-500 transition"
+              className="bg-[#E8C888] text-[#333] px-5 py-2 rounded-full font-semibold shadow-md hover:bg-[#D4AF7A] transition"
               onClick={() => setIsOpen(false)}
             >
               Login / Register
