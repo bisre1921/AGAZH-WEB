@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import HousekeeperImage from "../../public/assets/house_keeper_image.png";
+import Link from "next/link";
 
 const HomePage = () => {
   return (
@@ -28,12 +29,12 @@ const HomePage = () => {
 
         {/* Buttons */}
         <div className="flex flex-col md:flex-row gap-4 md:gap-6 mt-6">
-          <button className="bg-[#E8C888] text-[#333] px-6 py-3 rounded-full font-bold text-lg shadow-md hover:bg-[#D4AF7A] transition">
+          <Link href="/auth/RegisterEmployer" className="bg-[#E8C888] text-[#333] px-6 py-3 rounded-full font-bold text-lg shadow-md hover:bg-[#D4AF7A] transition">
             Hire a Housekeeper
-          </button>
-          <button className="border border-[#E8C888] text-[#E8C888] px-6 py-3 rounded-full font-bold text-lg hover:bg-[#E8C888] hover:text-[#333] transition">
+          </Link>
+          <Link href="/auth/RegisterHousekeeper" className="border border-[#E8C888] text-[#E8C888] px-6 py-3 rounded-full font-bold text-lg hover:bg-[#E8C888] hover:text-[#333] transition">
             Find a Job
-          </button>
+          </Link>
         </div>
       </div>
     </section>

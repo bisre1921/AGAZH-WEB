@@ -29,10 +29,25 @@ const NavBar = () => {
           </li>
           <li>
             <Link
-              href="/auth"
+              href="/auth/login"
               className="bg-[#E8C888] text-[#333] px-5 py-2 rounded-full font-semibold shadow-md hover:bg-[#D4AF7A] transition"
+              onClick={() => setIsOpen(false)}
             >
-              Login / Register
+              Login
+            </Link>
+            <Link
+              href="/auth/RegisterHousekeeper"
+              className="bg-[#E8C888] text-[#333] px-5 py-2 rounded-full font-semibold shadow-md hover:bg-[#D4AF7A] transition"
+              onClick={() => setIsOpen(false)}
+            >
+              Register as Housekeeper
+            </Link>
+            <Link
+              href="/auth/RegisterEmployer"
+              className="bg-[#E8C888] text-[#333] px-5 py-2 rounded-full font-semibold shadow-md hover:bg-[#D4AF7A] transition"
+              onClick={() => setIsOpen(false)}
+            >
+              Register as Employe
             </Link>
           </li>
         </ul>
@@ -50,22 +65,31 @@ const NavBar = () => {
       {isOpen && (
         <ul className="md:hidden flex flex-col items-center bg-[#F0E5D8] py-6 space-y-6 text-lg font-medium">
           <li>
-            <Link href="/" onClick={() => setIsOpen(false)}>
-              Home
-            </Link>
-          </li>
-          <li>
             <Link href="/contact" onClick={() => setIsOpen(false)}>
               Contact
             </Link>
           </li>
           <li>
             <Link
-              href="/auth"
+              href="/auth/login"
               className="bg-[#E8C888] text-[#333] px-5 py-2 rounded-full font-semibold shadow-md hover:bg-[#D4AF7A] transition"
               onClick={() => setIsOpen(false)}
             >
-              Login / Register
+              Login
+            </Link>
+            <Link
+              href="/auth/RegisterHousekeeper"
+              className="bg-[#E8C888] text-[#333] px-5 py-2 rounded-full font-semibold shadow-md hover:bg-[#D4AF7A] transition"
+              onClick={() => setIsOpen(false)}
+            >
+              Register as Housekeeper
+            </Link>
+            <Link
+              href="/auth/RegisterEmployer"
+              className="bg-[#E8C888] text-[#333] px-5 py-2 rounded-full font-semibold shadow-md hover:bg-[#D4AF7A] transition"
+              onClick={() => setIsOpen(false)}
+            >
+              Register as Employe
             </Link>
           </li>
         </ul>
