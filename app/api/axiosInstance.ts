@@ -70,5 +70,9 @@ export const login = (email: string, password: string, user_type: string) => {
   return api.post("/auth/login", { email, password, user_type });
 }
 
+export const getHousekeepers = () => {
+  return api.get("/housekeepers");
+}
+
 
 export default api;
