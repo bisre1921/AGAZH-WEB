@@ -23,6 +23,8 @@ export const loginUser = createAsyncThunk(
             console.log(userData)
             const response = await login(userData.email, userData.password, userData.user_type);
             localStorage.setItem("token", response.data.token);
+            localStorage.setItem("userType", userData.user_type);
+            localStorage.setItem("userInfo", JSON.stringify(response.data.user));
             return response.data;
         } catch (error: any) {
             return rejectWithValue(error.response.data.message || "Login failed");

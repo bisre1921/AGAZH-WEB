@@ -18,15 +18,16 @@ interface FormData {
 const LoginPage = () => {
   const dispatch = useAppDispatch();
   const router = useRouter();
-  const [userType, setUserType] = useState("housekeeper");
 
   const {
     register,
     handleSubmit,
     formState: { errors },
     watch,
-  } = useForm<FormData>();
-  const password = watch("password");
+  } = useForm<FormData>({
+    defaultValues: { userType: "housekeeper" }, 
+  });
+  
 
   const [loading, setLoading] = useState(false);
 
