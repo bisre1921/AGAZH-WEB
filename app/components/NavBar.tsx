@@ -91,6 +91,14 @@ const NavBar = () => {
             >
               Register as Employe
             </Link>
+
+            <Link
+              href="/BrowseHousekeepers"
+              className="bg-[#E8C888] text-[#333] px-5 py-2 rounded-full font-semibold shadow-md hover:bg-[#D4AF7A] transition"
+              onClick={() => setIsOpen(false)}
+            >
+              Browse Housekeepers
+            </Link>
           </li>
         </ul>
       )}
