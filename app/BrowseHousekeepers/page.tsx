@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { getHousekeepers } from "../api/axiosInstance";
 import { FaStar, FaMapMarkerAlt, FaPhone, FaUser, FaBriefcase } from "react-icons/fa";
+import { useRouter } from "next/navigation";
 
 interface Housekeeper {
   id: string;
@@ -26,6 +27,8 @@ const BrowseHousekeeperPage = () => {
   const [housekeepers, setHousekeepers] = useState<Housekeeper[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+
+  const router = useRouter();
 
   const fetchHousekeepers = async () => {
     try {
@@ -109,7 +112,10 @@ const BrowseHousekeeperPage = () => {
 
               {/* Contact Button */}
               <div className="mt-4">
-                <button className="w-full bg-[#E8C888] text-[#333] font-semibold py-2 rounded-lg shadow-md hover:bg-[#D4AF7A] transition">
+                <button 
+                  className="w-full bg-[#E8C888] text-[#333] font-semibold py-2 rounded-lg shadow-md hover:bg-[#D4AF7A] transition"
+                  onClick={() => router.push(`/HousekeeperDetail/${housekeeper.id}`)}
+                >
                   Contact: {housekeeper.phone_number}
                 </button>
               </div>
