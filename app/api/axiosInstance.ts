@@ -78,5 +78,8 @@ export const getHousekeeper = (id: string) => {
   return api.get(`/housekeepers/${id}`);
 }
 
+export const createHiring = (data: any) => {
+  return api.post("/hiring", data);
+}
 
 export default api;
