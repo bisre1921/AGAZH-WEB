@@ -7,6 +7,7 @@ import Link from "next/link";
 import { useAppDispatch } from "@/app/store/hooks";
 import { loginUser } from "../../store/slices/loginSlice"
 import { useRouter } from "next/navigation";
+import useAuth from "../useAuth"
 
 interface FormData {
   email: string;
@@ -16,8 +17,15 @@ interface FormData {
 
 
 const LoginPage = () => {
-  const dispatch = useAppDispatch();
   const router = useRouter();
+  // const {isAuthenticated, isLoading} = useAuth();
+
+  // if (isAuthenticated) {
+  //   router.push("/BrowseHousekeepers");
+  // }
+
+  const dispatch = useAppDispatch();
+  
 
   const {
     register,
@@ -44,6 +52,7 @@ const LoginPage = () => {
       console.log("Processed Data:", processedData);
       await dispatch(loginUser(processedData)).unwrap();
       console.log("logged in");
+      router.push(data.userType === "housekeeper" ? "/BrowseHousekeepers" : "/BrowseHousekeepers");
       setLoading(false);
     }, 2000);
   };
