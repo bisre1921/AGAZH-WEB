@@ -21,7 +21,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       if (!isAuthenticated) {
         router.replace("/auth/login");
       } else {
-        router.replace(userType === "housekeeper" ? "/BrowseHousekeepers" : "/BrowseJobs");
+        router.replace(userType === "housekeeper" ? "/BrowseHousekeepers" : "/BrowseHousekeepers");
       }
       setRedirected(true); 
     }

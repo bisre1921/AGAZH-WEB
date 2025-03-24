@@ -44,22 +44,22 @@ const BrowseHousekeeperPage = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#0f0f0f] to-[#1a1a1a] text-white py-12 px-6">
-      <h1 className="text-5xl font-extrabold text-center text-[#FFD700] mb-8 uppercase tracking-wide shadow-lg">
+    <div className="min-h-screen bg-[#FAF3E0] text-[#333] px-6 pt-20">
+      <h1 className="text-5xl font-extrabold text-center text-[#B08968] mb-8 uppercase tracking-wide shadow-lg">
         🔥 Top Housekeepers
       </h1>
 
       {loading && <p className="text-center text-xl font-semibold">Loading...</p>}
       {error && <p className="text-center text-red-500">{error}</p>}
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
         {housekeepers.map((housekeeper) => (
           <div
             key={housekeeper.id}
-            className="relative bg-black/40 border border-[#FFD700] rounded-2xl overflow-hidden shadow-xl transition-all transform hover:scale-105 hover:shadow-2xl"
+            className="relative bg-white border border-[#B08968] rounded-2xl overflow-hidden shadow-md hover:shadow-lg transition-all"
           >
             {/* Image */}
-            <div className="h-52 bg-gray-900 flex items-center justify-center relative">
+            <div className="h-52 bg-gray-200 flex items-center justify-center relative">
               {housekeeper.photo_url ? (
                 <img
                   src={housekeeper.photo_url}
@@ -78,9 +78,9 @@ const BrowseHousekeeperPage = () => {
 
             {/* Info Section */}
             <div className="p-5">
-              <h2 className="text-3xl font-bold text-[#FFD700]">{housekeeper.name}</h2>
-              <p className="text-gray-400 flex items-center gap-2 mt-1">
-                <FaMapMarkerAlt className="text-[#FFD700]" /> {housekeeper.location}
+              <h2 className="text-3xl font-bold text-[#B08968]">{housekeeper.name}</h2>
+              <p className="text-gray-600 flex items-center gap-2 mt-1">
+                <FaMapMarkerAlt className="text-[#B08968]" /> {housekeeper.location}
               </p>
 
               {/* Rating */}
@@ -89,27 +89,27 @@ const BrowseHousekeeperPage = () => {
                   <FaStar
                     key={index}
                     className={`text-xl ${
-                      index < (housekeeper.rating || 0) ? "text-yellow-400" : "text-gray-600"
+                      index < (housekeeper.rating || 0) ? "text-yellow-400" : "text-gray-400"
                     }`}
                   />
                 ))}
-                <span className="ml-2 text-gray-400 text-sm">({housekeeper.rating || 0})</span>
+                <span className="ml-2 text-gray-600 text-sm">({housekeeper.rating || 0})</span>
               </div>
 
-              <p className="text-gray-300 flex items-center gap-2 mt-3">
-                <FaBriefcase className="text-[#FFD700]" /> {housekeeper.experience} years experience
+              <p className="text-gray-700 flex items-center gap-2 mt-3">
+                <FaBriefcase className="text-[#B08968]" /> {housekeeper.experience} years experience
               </p>
 
-              <p className="text-gray-400 mt-2">
-                <span className="font-semibold text-white">Category:</span> {housekeeper.category}
+              <p className="text-gray-700 mt-2">
+                <span className="font-semibold text-[#333]">Category:</span> {housekeeper.category}
               </p>
-              <p className="text-gray-400">
-                <span className="font-semibold text-white">Employment:</span> {housekeeper.employment_type.replace("_", " ")}
+              <p className="text-gray-700">
+                <span className="font-semibold text-[#333]">Employment:</span> {housekeeper.employment_type.replace("_", " ")}
               </p>
 
               {/* Contact Button */}
               <div className="mt-4">
-                <button className="w-full bg-[#FFD700] text-black font-semibold py-2 rounded-lg hover:bg-[#ffcc00] transition">
+                <button className="w-full bg-[#E8C888] text-[#333] font-semibold py-2 rounded-lg shadow-md hover:bg-[#D4AF7A] transition">
                   Contact: {housekeeper.phone_number}
                 </button>
               </div>
