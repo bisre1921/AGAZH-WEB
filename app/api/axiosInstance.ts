@@ -74,5 +74,9 @@ export const getHousekeepers = () => {
   return api.get("/housekeepers");
 }
 
+export const getHousekeeper = (id: string) => {
+  return api.get(`/housekeepers/${id}`);
+}
+
 
 export default api;
