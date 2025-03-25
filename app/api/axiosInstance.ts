@@ -94,4 +94,8 @@ export const createReview = (data: any) => {
   return api.post("/ratings", data);
 }
 
+export const getHiringHistory = (employer_id: string) => {
+  return api.get(`/hiring/employer/${employer_id}`);
+}
+
 export default api;

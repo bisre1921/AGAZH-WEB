@@ -22,11 +22,11 @@ const NavBar = () => {
               Home
             </Link>
           </li>
-          <li>
+          {/* <li>
             <Link href="/contact" className="hover:text-[#B08968] transition">
               Contact
             </Link>
-          </li>
+          </li> */}
           <li>
             <Link
               href="/auth/login"
@@ -50,7 +50,14 @@ const NavBar = () => {
               Register as Employe
             </Link>
           </li>
+          <li>
+            <Link href="/HiringHistory" className="hover:text-[#B08968] transition">
+              Hiring History
+            </Link>
+          </li>
+
         </ul>
+
 
         {/* Mobile Menu Button */}
         <button
@@ -64,11 +71,11 @@ const NavBar = () => {
       {/* Mobile Menu */}
       {isOpen && (
         <ul className="md:hidden flex flex-col items-center bg-[#F0E5D8] py-6 space-y-6 text-lg font-medium">
-          <li>
+          {/* <li>
             <Link href="/contact" onClick={() => setIsOpen(false)}>
               Contact
             </Link>
-          </li>
+          </li> */}
           <li>
             <Link
               href="/auth/login"
@@ -98,6 +105,12 @@ const NavBar = () => {
               onClick={() => setIsOpen(false)}
             >
               Browse Housekeepers
+            </Link>
+          </li>
+
+          <li>
+            <Link href="/HiringHistory" className="hover:text-[#B08968] transition">
+              Hiring History
             </Link>
           </li>
         </ul>
