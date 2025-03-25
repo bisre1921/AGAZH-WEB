@@ -90,4 +90,8 @@ export const updateHiringStatus = (id: string, data: any) => {
   return api.put(`/hiring/${id}`, data);
 }
 
+export const createReview = (data: any) => {
+  return api.post("/ratings", data);
+}
+
 export default api;

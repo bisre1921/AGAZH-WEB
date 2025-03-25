@@ -1,6 +1,6 @@
 "use client";
 
-import { getHiringStatus, getHousekeeper } from "@/app/api/axiosInstance";
+import { getHiringStatus, getHousekeeper, updateHiringStatus } from "@/app/api/axiosInstance";
 import Loader from "@/app/components/Loader";
 import { useParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
@@ -76,10 +76,28 @@ const HiringStatus = () => {
     fetchHiringDetails();
   }, [id]);
 
+  const handleUpdateStatus = async (newStatus: string) => {
+    if (!hiring) return;
+
+    try {
+      await updateHiringStatus(hiring.id, { status: newStatus });
+      setHiring({ ...hiring, status: newStatus });
+      console.log("Hiring status updated successfully.");
+    } catch (error) {
+      console.error("Error updating hiring status:", error);
+    }
+  }
+
   if (loading) return <Loader />;
 
   if (!hiring || !housekeeper) {
     return <div className="text-center text-gray-500 mt-10">Unable to load hiring details.</div>;
+  }
+
+  const handleWriteReview = () => {
+    if (hiring && housekeeper) {
+      // to do
+    }
   }
 
   return (
@@ -123,23 +141,35 @@ const HiringStatus = () => {
       {/* Action Buttons */}
       <div className="flex flex-col gap-4 pt-12">
         {hiring.status === "COMPLETED" && (
-          <button className="bg-blue-600 text-black px-6 py-3 rounded-lg hover:bg-blue-700 transition duration-300">
+          <button 
+            className="bg-blue-600 text-black px-6 py-3 rounded-lg hover:bg-blue-700 transition duration-300"
+            onClick={handleWriteReview}
+          >
             Write a Review
           </button>
         )}
 
         {hiring.status !== "COMPLETED" && (
-          <button className="bg-green-600 text-black px-6 py-3 rounded-lg hover:bg-green-700 transition duration-300">
+          <button 
+            className="bg-green-600 text-black px-6 py-3 rounded-lg hover:bg-green-700 transition duration-300"
+            onClick={() => handleUpdateStatus("COMPLETED")}
+          >
             Mark as Completed
           </button>
         )}
 
         {hiring.status === "PENDING" && (
           <>
-            <button className="bg-green-600 text-black px-6 py-3 rounded-lg hover:bg-green-700 transition duration-300">
+            <button 
+              className="bg-green-600 text-black px-6 py-3 rounded-lg hover:bg-green-700 transition duration-300"
+              onClick={() => handleUpdateStatus("APPROVED")}
+            >
               Approve Hiring
             </button>
-            <button className="bg-red-600 text-black px-6 py-3 rounded-lg hover:bg-red-700 transition duration-300">
+            <button 
+              className="bg-red-600 text-black px-6 py-3 rounded-lg hover:bg-red-700 transition duration-300"
+              onClick={() => handleUpdateStatus("REJECTED")}
+            >
               Reject Hiring
             </button>
           </>
