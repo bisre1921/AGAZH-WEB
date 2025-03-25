@@ -98,4 +98,8 @@ export const getHiringHistory = (employer_id: string) => {
   return api.get(`/hiring/employer/${employer_id}`);
 }
 
+export const getEmployer = (id: string) => {
+  return api.get(`/employers/${id}`);
+}
+
 export default api;

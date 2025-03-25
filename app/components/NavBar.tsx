@@ -56,6 +56,12 @@ const NavBar = () => {
             </Link>
           </li>
 
+          <li>
+            <Link href="/EmployerProfile" className="hover:text-[#B08968] transition">
+              Profile
+            </Link>
+          </li>
+
         </ul>
 
 
@@ -113,6 +119,13 @@ const NavBar = () => {
               Hiring History
             </Link>
           </li>
+
+          <li>
+            <Link href="/EmployerProfile" className="hover:text-[#B08968] transition">
+              Profile
+            </Link>
+          </li>
+          
         </ul>
       )}
     </nav>
