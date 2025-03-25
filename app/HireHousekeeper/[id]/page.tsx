@@ -8,7 +8,7 @@ import * as Yup from "yup";
 import axios from "axios";
 import { DatePicker } from "@mantine/dates";
 import "@mantine/core/styles.css";
-import { getHousekeeper } from "@/app/api/axiosInstance";
+import { createHiring, getHousekeeper } from "@/app/api/axiosInstance";
 
 interface Housekeeper {
   id: string;
@@ -50,6 +50,7 @@ const hireSchema = Yup.object().shape({
   startDate: Yup.date().required("Start date is required"),
   deliveryType: Yup.string().oneOf(["DELIVERY", "PICKUP"]).required("Delivery type is required"),
 });
+
 
 const HireHousekeeper = () => {
   const params = useParams();
@@ -114,14 +115,13 @@ const HireHousekeeper = () => {
         start_date: data.startDate.toISOString(),
         delivery_type: data.deliveryType,
       };
-
-      const response = await axios.post("/api/hiring", hiringData);
+      console.log("Hiring data:", hiringData);
+      const response = await createHiring(hiringData);
       if (!response.data || !response.data.id) {
         throw new Error("Invalid response from server");
       }
-
+      console.log("Hiring response:", response.data);
       alert("Hiring request sent successfully!");
-      router.push(`/hiring-status/${response.data.id}`);
     } catch (error: any) {
       console.error("Hiring error:", error);
       alert("Hiring failed. Please try again.");
@@ -157,26 +157,24 @@ const HireHousekeeper = () => {
         </div>
 
         <form onSubmit={handleSubmit(onSubmit)} className="mt-6 space-y-4">
-          {/* Date Picker */}
+        
           <div>
             <label className="block font-semibold text-[#B08968]">Start Date</label>
             <Controller
-    name="startDate"
-    control={control}
-    render={({ field }) => (
-      <DatePicker
-        value={field.value}
-        onChange={(date: any) => field.onChange(date)}
-        minDate={new Date()}
-        className="border p-4 w-full rounded-lg mt-1 bg-[#F9F6F1] text-[#333] border-[#B08968]/50 focus:ring-2 focus:ring-[#B08968] focus:outline-none transition-all duration-300 ease-in-out"
-        // Added some custom styling for a more professional and sleek look
-      />
-    )}
-  />
+              name="startDate"
+              control={control}
+              render={({ field }) => (
+                <DatePicker
+                  value={field.value}
+                  onChange={(date: any) => field.onChange(date)}
+                  minDate={new Date()}
+                  className="border p-4 w-full rounded-lg mt-1 bg-[#F9F6F1] text-[#333] border-[#B08968]/50 focus:ring-2 focus:ring-[#B08968] focus:outline-none transition-all duration-300 ease-in-out"
+                />
+              )}
+            />
             {errors.startDate && <p className="text-red-500 text-sm mt-1">{errors.startDate.message}</p>}
           </div>
 
-          {/* Delivery Options */}
           <div>
             <label className="block font-semibold text-[#B08968]">Delivery Options</label>
             <div className="flex gap-4 mt-2">
@@ -191,7 +189,6 @@ const HireHousekeeper = () => {
             </div>
           </div>
 
-          {/* Requirements */}
           <div>
             <label className="block font-semibold text-[#B08968]">Requirements</label>
             <textarea
@@ -202,7 +199,6 @@ const HireHousekeeper = () => {
             />
           </div>
 
-          {/* Salary Offer */}
           <div>
             <label className="block font-semibold text-[#B08968]">Salary Offer (USD)</label>
             <input
@@ -213,10 +209,8 @@ const HireHousekeeper = () => {
             />
           </div>
 
-          {/* Submit Button */}
           <button 
             className="w-full bg-[#B08968] text-black px-6 py-3 rounded-full font-bold text-lg shadow-md hover:bg-[#8E6B50] transition"
-            
           >
             {submitLoading ? "Submitting..." : "Submit Hiring Request"}
           </button>
