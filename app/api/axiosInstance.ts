@@ -83,7 +83,7 @@ export const createHiring = (data: any) => {
 }
 
 export const getHiringStatus = (employer_id: string) => {
-  return api.get(`/hiring/employer/${employer_id}`);
+  return api.get(`/hiring/${employer_id}`);
 }
 
 export default api;

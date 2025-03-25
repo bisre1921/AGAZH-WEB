@@ -122,6 +122,7 @@ const HireHousekeeper = () => {
       }
       console.log("Hiring response:", response.data);
       alert("Hiring request sent successfully!");
+      router.push(`/HiringStatus/${response.data.id}`);
     } catch (error: any) {
       console.error("Hiring error:", error);
       alert("Hiring failed. Please try again.");
