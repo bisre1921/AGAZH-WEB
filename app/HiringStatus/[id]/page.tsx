@@ -2,7 +2,7 @@
 
 import { getHiringStatus, getHousekeeper, updateHiringStatus } from "@/app/api/axiosInstance";
 import Loader from "@/app/components/Loader";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { FaCheckCircle, FaTimesCircle, FaClock, FaTruck } from "react-icons/fa";
 
@@ -51,6 +51,7 @@ const getStatusColor = (status: string): string => {
 };
 
 const HiringStatus = () => {
+  const router = useRouter();
   const params = useParams();
   const { id } = params;
 
@@ -96,7 +97,7 @@ const HiringStatus = () => {
 
   const handleWriteReview = () => {
     if (hiring && housekeeper) {
-      // to do
+      router.push(`/WriteReview?housekeeperId=${hiring.housekeeper_id}&housekeeperName=${housekeeper.name}`);
     }
   }
 
