@@ -48,8 +48,8 @@ const BrowseHousekeeperPage = () => {
 
   return (
     <div className="min-h-screen bg-[#FAF3E0] text-[#333] px-6 pt-20">
-      <h1 className="text-5xl font-extrabold text-center text-[#B08968] mb-8 uppercase tracking-wide shadow-lg">
-        🔥 Top Housekeepers
+      <h1 className="text-3xl font-extrabold text-center text-[#B08968] mb-8 uppercase tracking-wide shadow-lg">
+        Top Housekeepers
       </h1>
 
       {loading && <p className="text-center text-xl font-semibold">Loading...</p>}

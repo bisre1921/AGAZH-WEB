@@ -1,7 +1,7 @@
 "use client";
 
 import { getHousekeeper } from "@/app/api/axiosInstance";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import {
   FaMapMarkerAlt,
@@ -39,6 +39,8 @@ const HousekeeperDetail = () => {
   const [loading, setLoading] = useState(true);
   const [housekeeper, setHousekeeper] = useState<Housekeeper | null>(null);
 
+  const router = useRouter();
+
   useEffect(() => {
     const fetchHousekeeper = async () => {
       try {
@@ -53,6 +55,10 @@ const HousekeeperDetail = () => {
 
     fetchHousekeeper();
   }, [id]);
+
+  const handleHire = () => {
+    router.push(`/HireHousekeeper/${id}`);
+  }
 
   if (loading) {
     return <p className="text-center text-xl font-semibold mt-20">Loading...</p>;
@@ -167,7 +173,10 @@ const HousekeeperDetail = () => {
           ) : null}
 
           <div className="mt-6">
-            <button className="w-full bg-[#E8C888] text-[#333] font-semibold py-3 rounded-lg shadow-md hover:bg-[#D4AF7A] transition flex items-center justify-center gap-2">
+            <button 
+              className="w-full bg-[#E8C888] text-[#333] font-semibold py-3 rounded-lg shadow-md hover:bg-[#D4AF7A] transition flex items-center justify-center gap-2"
+              onClick={handleHire}
+            >
               Hire {housekeeper.name}
             </button>
           </div>

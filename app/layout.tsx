@@ -7,6 +7,7 @@ import NavBar from "./components/NavBar";
 import useAuth from "./auth/useAuth";
 import { useRouter } from "next/navigation";
 import Loader from "./components/Loader";
+import { MantineProvider } from "@mantine/core";
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   const router = useRouter();
@@ -34,7 +35,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <html lang="en">
         <body>
           <NavBar />
-          {children}
+          <MantineProvider theme={{}} defaultColorScheme="light">
+            {children}
+          </MantineProvider>
         </body>
       </html>
     </Provider>
