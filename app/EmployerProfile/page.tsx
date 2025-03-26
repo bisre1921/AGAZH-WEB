@@ -12,6 +12,9 @@ import {
   FaTimes,
   FaSignOutAlt,
 } from "react-icons/fa";
+import { useAppDispatch } from "../store/hooks";
+import { logoutUser } from "../store/slices/logoutSlice";
+import { useRouter } from "next/navigation";
 
 interface EmployerProfile {
   name: string;
@@ -99,6 +102,18 @@ const EmployerProfile = () => {
       setLoading(false);
     }
   };
+
+  const dispatch = useAppDispatch();
+  const router = useRouter();
+
+  const handlelogout = async () => {
+    try {
+      await dispatch(logoutUser()).unwrap();
+      router.push("/auth/login")
+    } catch (error) {
+      console.log("Error logging out:", error);
+    }
+  }
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-[#F9F6F1] text-[#333] px-6 md:px-10 pt-20">
@@ -198,10 +213,7 @@ const EmployerProfile = () => {
 
             {/* Logout Button */}
             <button
-              onClick={() => {
-                localStorage.removeItem("userInfo");
-                window.location.href = "/login";
-              }}
+              onClick={handlelogout}
               className="w-full bg-red-600 text-white py-3 rounded-full font-bold shadow-md hover:bg-red-700 transition mt-4"
             >
               <FaSignOutAlt className="mr-2 inline" /> Logout
