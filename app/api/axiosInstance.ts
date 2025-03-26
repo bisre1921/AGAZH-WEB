@@ -102,4 +102,8 @@ export const getEmployer = (id: string) => {
   return api.get(`/employers/${id}`);
 }
 
+export const updateEmployer = (id: string, data: any) => {
+  return api.put(`/employers/${id}`, data);
+}
+
 export default api;
